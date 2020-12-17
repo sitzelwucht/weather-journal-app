@@ -10,12 +10,13 @@ const tempDiv = document.getElementById('temp');
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&appid=2506401d13ee6add681fea1b9fdc1518';
 
-// Event listener to call functions to post and retrieve data
+
+// Event listener to call functions to post  retrieve data
 
 genBtn.addEventListener('click', () => {
-   generateDataToPost().then(dataToPost => {
-       postData('/all', dataToPost);
-       getProjectData('/all');
+    generateDataToPost().then(dataToPost => {
+    postData('/all', dataToPost);
+    getProjectData('/all');
    })
 
 });
@@ -23,6 +24,7 @@ genBtn.addEventListener('click', () => {
 // Helper functions to generate values
 
 function getURL() {
+    // const apiKey = await getAPIKey();
     return baseURL + document.querySelector('#zip').value + apiKey + '&units=metric';
 }
 
@@ -36,9 +38,21 @@ function getFeelings() {
     return document.querySelector('#feelings').value;
 }
 
-// function to generate, gather and return the data to be posted to the server
+// async function getAPIKey() {
+//     const apiKey = await fetch('/api');
+//     try {
+//         const data = apiKey;
+//         return data;
+//     } catch (err) {
+//         console.log('Unable to fetch API key', err)
+//     }
+// }
 
-async function generateDataToPost() {
+
+
+// function to generate, gather and return the data to be posted to the server as a JS OBJECT!!! --- 
+
+async function generateDataToPost() {                                                   
     
     const date = getDate();
     const entry = getFeelings();
@@ -113,3 +127,5 @@ async function getProjectData(url) {
         console.log('Error occurred:', err);
       }
 }
+
+

@@ -1,3 +1,7 @@
+// require('dotenv').config();
+
+
+
 // Setup empty JS object to act as endpoint for all routes
 const projectData = {};
 
@@ -27,7 +31,7 @@ app.use(express.static('website'));
 
 // Spin up the server
 
-const port = 8000;
+const port = 7000;
 
 const server = app.listen(port, listening)
 
@@ -43,13 +47,21 @@ app.get('/all', sendDataBack);
 function sendDataBack(req, res) {
     res.send(projectData);
     
+
 }
+
+// app.get('/api', (req, res) => {
+//     const apiKey = process.env.API_KEY;
+//     res.send(apiKey);
+// })
 
 // Post Route
 
 app.post('/all', (req, res) => {
     const newData = req.body;
-    res.json(newData);
+    // res.json(newData);
     projectData.innerObj = newData;
 
 });
+
+
